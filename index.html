@@ -274,6 +274,7 @@ const OLD_SAVE_KEY = "coinClicker";   // the simple version of the game
 const HOUR = 3600 * 1000;
 const COST_GROWTH = 1.15;             // each property costs 15% more than the last one
 const MAX_AWAY = 24 * HOUR;           // properties only earn for 24 hours while the game is closed
+const CHEAT_CLICK = 2e9;              // what one click is worth with the secret cheat on
 
 /* =========================================================
    NUMBER FORMATTING
@@ -577,6 +578,7 @@ function newState(){
     version: 2, company: "Big W Real Estate",
     allTimeEarned: 0, clicks: 0, clickEarned: 0,
     achievements: {}, playTime: 0,
+    cheat: false, // the secret $2 billion click (see SECRET CHEAT below)
     startedAt: now, lastTick: now,
   });
 }
@@ -604,7 +606,7 @@ function recompute(){
   D.cps = cps;
   D.glowups = glowups;
   D.clickPct = clickPct;
-  D.clickPower = clickX + cps * clickPct;
+  D.clickPower = S.cheat ? CHEAT_CLICK : clickX + cps * clickPct;
 }
 function buildingCost(i, n){
   const b = PROPS[i].base * Math.pow(COST_GROWTH, S.owned[i]);
@@ -632,7 +634,7 @@ function advance(now){
 function startFresh(now){
   const lost = S.dollars;
   const keep = { company:S.company, allTimeEarned:S.allTimeEarned, clicks:S.clicks, clickEarned:S.clickEarned,
-    startedAt:S.startedAt, version:S.version, achievements:S.achievements, playTime:S.playTime };
+    startedAt:S.startedAt, version:S.version, achievements:S.achievements, playTime:S.playTime, cheat:S.cheat };
   S = Object.assign(freshRun(now), keep, { lastTick: now });
   recompute(); rebuildStore(); rebuildLog(); save();
   showModal("🏚️ You Sold Everything",
@@ -1253,6 +1255,30 @@ function renderAchievements(){
    ========================================================= */
 buildBuildingRows();
 $("coin").addEventListener("click", clickCoin);
+
+/* ---------- SECRET CHEAT 🤫 ----------
+   Turns every coin click into $2 billion. Do it again to turn it back off.
+   Two ways in:  type  bigw  on the keyboard (not while renaming the company),
+            or   tap the COIN CLICKER title 7 times fast (works on phones). */
+const CHEAT_CODE = "bigw";
+let typed = "";
+function toggleCheat(){
+  S.cheat = !S.cheat;
+  recompute(); render(); save();
+  toast(S.cheat ? `🤫 SECRET CHEAT ON: every click is ${money(CHEAT_CLICK)}!!` : "Cheat off. Back to earning it the honest way.", "gold");
+}
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input, textarea") || e.key.length !== 1) return;
+  typed = (typed + e.key.toLowerCase()).slice(-CHEAT_CODE.length);
+  if (typed === CHEAT_CODE) { typed = ""; toggleCheat(); }
+});
+let titleTaps = 0, titleTapTimer = null;
+document.querySelector(".brand h1").addEventListener("click", () => {
+  titleTaps++;
+  clearTimeout(titleTapTimer);
+  titleTapTimer = setTimeout(() => { titleTaps = 0; }, 1500); // taps must be less than 1.5 seconds apart
+  if (titleTaps >= 7) { titleTaps = 0; toggleCheat(); }
+});
 $("startOverBtn").addEventListener("click", startOver);
 $("saveNow").addEventListener("click", () => { save(); toast(canSave ? "Game saved! 💾" : "This browser won't let the game save here. Try Export instead.", !canSave); });
 $("exportBtn").addEventListener("click", exportSave);
