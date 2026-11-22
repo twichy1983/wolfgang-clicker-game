@@ -275,6 +275,9 @@ const HOUR = 3600 * 1000;
 const COST_GROWTH = 1.15;             // each property costs 15% more than the last one
 const MAX_AWAY = 24 * HOUR;           // properties only earn for 24 hours while the game is closed
 const CHEAT_CLICK = 2e9;              // what one click is worth with the secret cheat on
+const NAME_CHEAT = "the real real estate"; // name your company this (any capitals) and...
+const NAME_CHEAT_CLICK = 5e15;        // ...every click is worth $5 quadrillion
+const hasNameCheat = () => S.company.trim().toLowerCase() === NAME_CHEAT;
 
 /* =========================================================
    NUMBER FORMATTING
@@ -606,7 +609,8 @@ function recompute(){
   D.cps = cps;
   D.glowups = glowups;
   D.clickPct = clickPct;
-  D.clickPower = S.cheat ? CHEAT_CLICK : clickX + cps * clickPct;
+  // Cheats replace the normal click value; if both are on, the bigger one wins
+  D.clickPower = hasNameCheat() ? NAME_CHEAT_CLICK : S.cheat ? CHEAT_CLICK : clickX + cps * clickPct;
 }
 function buildingCost(i, n){
   const b = PROPS[i].base * Math.pow(COST_GROWTH, S.owned[i]);
@@ -1286,12 +1290,16 @@ $("importBtn").addEventListener("click", importSave);
 $("resetBtn").addEventListener("click", hardReset);
 let nameBeforeEdit = "";
 $("companyName").addEventListener("focus", () => { nameBeforeEdit = S.company; });
-$("companyName").addEventListener("input", e => { S.company = e.target.value.trim() || "No Name Real Estate"; });
+$("companyName").addEventListener("input", e => { S.company = e.target.value.trim() || "No Name Real Estate"; recompute(); render(); });
 $("companyName").addEventListener("keydown", e => {
   if (e.key === "Enter") e.target.blur();
-  if (e.key === "Escape") { S.company = nameBeforeEdit; e.target.value = S.company; e.target.blur(); }
+  if (e.key === "Escape") { S.company = nameBeforeEdit; e.target.value = S.company; recompute(); render(); e.target.blur(); }
 });
-$("companyName").addEventListener("change", e => { e.target.value = S.company; save(); toast(`Your company is now called ${S.company}. Sick name.`); });
+$("companyName").addEventListener("change", e => {
+  e.target.value = S.company; save();
+  if (hasNameCheat()) toast(`🏰 THE REAL REAL ESTATE has entered the chat. Every click is now ${money(NAME_CHEAT_CLICK)}!!!`, "gold");
+  else toast(`Your company is now called ${S.company}. Sick name.`);
+});
 $("editName").addEventListener("click", () => { const i = $("companyName"); i.focus(); i.select(); });
 document.querySelectorAll(".buyAmt button").forEach(b => b.addEventListener("click", () => {
   document.querySelectorAll(".buyAmt button").forEach(x => x.classList.toggle("on", x === b));
