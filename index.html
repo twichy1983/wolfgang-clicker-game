@@ -69,55 +69,6 @@ h2{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);
   transition:opacity .4s;transform:rotate(-1deg);box-shadow:4px 4px 0 #000}
 #ticker b{color:#d61f9e;letter-spacing:1px;margin-right:6px}
 
-/* ---------- CENTER: the tax man ---------- */
-#tax{position:relative;border:4px solid var(--red);border-radius:14px;padding:0 16px 16px;text-align:center;overflow:hidden;
-  background:repeating-linear-gradient(45deg,#3a0610 0 16px,#2a0309 16px 32px);
-  box-shadow:0 0 30px rgba(255,0,0,.45),inset 0 0 60px rgba(0,0,0,.7);animation:taxpulse 2s ease-in-out infinite}
-@keyframes taxpulse{50%{box-shadow:0 0 55px rgba(255,0,0,.8),inset 0 0 60px rgba(0,0,0,.7)}}
-#tax.urgent{animation:taxpulse .45s ease-in-out infinite}
-.tax-stripe{height:14px;margin:0 -16px;background:repeating-linear-gradient(-45deg,var(--red) 0 12px,#000 12px 24px)}
-.tax-head{margin:0 -16px 10px;background:#000;color:var(--red);font-weight:900;letter-spacing:2px;font-size:15px;padding:6px}
-#taxLabel{font-weight:900;letter-spacing:3px;color:#ffb3b3;font-size:15px}
-#taxAmt{font-family:"Courier New",Consolas,monospace;font-weight:900;font-size:clamp(28px,3.4vw,50px);color:var(--red);line-height:1.15;
-  text-shadow:0 0 6px #ff0000,0 0 20px #b00000;word-break:break-word;margin:6px 0}
-.tax-timer{font-weight:800;letter-spacing:2px;color:#ffd5d5;font-size:14px}
-#taxTimer{display:block;font-family:"Courier New",Consolas,monospace;font-size:clamp(32px,3.6vw,52px);color:#fff;letter-spacing:4px;
-  text-shadow:0 0 10px #ff2a2a,0 0 24px #a00}
-#tax.urgent #taxTimer{animation:blink .9s steps(2) infinite}
-@keyframes blink{50%{color:var(--red)}}
-.tax-bar{height:14px;background:#000;border:2px solid #600;border-radius:7px;overflow:hidden;margin:10px 0}
-#taxBar{height:100%;width:100%;background:linear-gradient(90deg,#ff2424,#ff7a1a,#ffe94f);transition:width .3s linear}
-#taxInfo{font-size:13px;color:#ffc9c9;margin-bottom:10px;line-height:1.5}
-#payBtn{width:100%;padding:14px;font-size:19px;font-weight:900;letter-spacing:1px;border-radius:12px;border:3px solid #fff;
-  background:linear-gradient(180deg,#ff3b3b,#a30000);color:#fff;text-shadow:2px 2px 0 #000;box-shadow:0 5px 0 #4a0000}
-#payBtn:hover:not(:disabled){filter:brightness(1.15)}
-#payBtn:active:not(:disabled){transform:translateY(4px);box-shadow:0 1px 0 #4a0000}
-#payBtn:disabled{background:#3a1010;color:#a77;border-color:#622;box-shadow:none;cursor:not-allowed}
-#tax.refund{border-color:var(--lime);background:repeating-linear-gradient(45deg,#06301a 0 16px,#042412 16px 32px);animation:none;box-shadow:0 0 30px rgba(124,252,124,.4)}
-#tax.refund .tax-stripe{background:repeating-linear-gradient(-45deg,var(--lime) 0 12px,#000 12px 24px)}
-#tax.refund .tax-head{color:var(--lime)}
-#tax.refund #taxAmt{color:var(--lime);text-shadow:0 0 8px #7CFC7C,0 0 24px #0a7a3a}
-#tax.refund #taxLabel,#tax.refund .tax-timer,#tax.refund #taxInfo{color:#d4ffd4}
-#tax.refund #taxTimer{text-shadow:0 0 10px #7CFC7C}
-#tax.refund #taxBar{background:linear-gradient(90deg,#7CFC7C,#ffe94f)}
-#tax.refund #payBtn{background:linear-gradient(180deg,#5ee65e,#178a2f);box-shadow:0 5px 0 #063d1d}
-#dangerOverlay{position:fixed;inset:0;pointer-events:none;z-index:40}
-body.danger #dangerOverlay{animation:danger 1s ease-in-out infinite}
-@keyframes danger{50%{box-shadow:inset 0 0 120px 20px rgba(255,0,0,.45)}}
-
-.helpers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.helpBtn{text-align:left;background:var(--panel2);border:3px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--text);box-shadow:0 4px 0 #0a1030}
-.helpBtn:hover:not(.cant){border-color:var(--gold)}
-.helpBtn:active:not(.cant){transform:translateY(3px);box-shadow:0 1px 0 #0a1030}
-.helpBtn .t{font-weight:800;font-size:15px}
-.helpBtn .d{font-size:12px;color:var(--muted);margin:3px 0 6px}
-.helpBtn .c{font-weight:700;color:var(--lime)}
-.helpBtn .n{float:right;font-size:24px;font-weight:900;color:var(--gold)}
-.helpCol{display:flex;flex-direction:column;gap:4px}
-.helpCol .helpBtn{flex:1}
-.fireBtn{background:transparent;border:2px dashed #7a2a4a;color:#ff9bc8;border-radius:8px;padding:5px 8px;font-size:12px;font-weight:700}
-.fireBtn:hover:not(:disabled){background:#2a0d1d;border-style:solid}
-.fireBtn:disabled{opacity:.35;cursor:not-allowed}
 .cant{opacity:.55}
 .cant .c,.cant .cost{color:#ff8080 !important}
 
@@ -238,7 +189,6 @@ footer{font-size:12px;color:#6f80b5;margin-top:18px;line-height:1.5}
 </style>
 </head>
 <body>
-<div id="dangerOverlay"></div>
 <div id="app">
   <!-- LEFT -->
   <div class="col" id="left">
@@ -261,39 +211,6 @@ footer{font-size:12px;color:#6f80b5;margin-top:18px;line-height:1.5}
 
   <!-- CENTER -->
   <div class="col" id="center">
-    <section id="tax">
-      <div class="tax-stripe"></div>
-      <div class="tax-head" id="taxHead">😱 THE TAX MAN IS COMING 😱</div>
-      <div id="taxLabel">PROPERTY TAXES OWED</div>
-      <div id="taxAmt">$0</div>
-      <div class="tax-timer" id="timerLabel">HE GETS HERE IN<span id="taxTimer">24:00:00</span></div>
-      <div class="tax-bar"><div id="taxBar"></div></div>
-      <div id="taxInfo"></div>
-      <button id="payBtn">PAY THE TAX MAN</button>
-    </section>
-
-    <h2>Helpers <span class="sticker">HIRE THEM!!</span></h2>
-    <div class="helpers">
-      <div class="helpCol">
-        <button class="helpBtn" id="timerHelpBtn" data-tt="help:timer">
-          <span class="n" id="timerHelpN">0</span>
-          <div class="t">⏳ Tax Extension Guy</div>
-          <div class="d">+1 hour before the Tax Man shows up.</div>
-          <div class="c" id="timerHelpC">$0</div>
-        </button>
-        <button class="fireBtn" id="timerFireBtn" data-tt="fire:timer">Fire one · <span id="timerFireC">$0</span></button>
-      </div>
-      <div class="helpCol">
-        <button class="helpBtn" id="nerdHelpBtn" data-tt="help:nerd">
-          <span class="n" id="nerdHelpN">0</span>
-          <div class="t">🤓 Math Nerd Accountant</div>
-          <div class="d">−1% property taxes. Can go NEGATIVE.</div>
-          <div class="c" id="nerdHelpC">$0</div>
-        </button>
-        <button class="fireBtn" id="nerdFireBtn" data-tt="fire:nerd">Fire one · <span id="nerdFireC">$0</span></button>
-      </div>
-    </div>
-
     <h2>Housing Market <span class="sticker">LIVE!!!</span></h2>
     <div class="mkt">
       <div class="mktHead">
@@ -325,7 +242,7 @@ footer{font-size:12px;color:#6f80b5;margin-top:18px;line-height:1.5}
         <button class="btn danger" id="resetBtn">🔥 Delete EVERYTHING</button>
       </div>
       <div class="note" id="saveNote">Saves to this browser every 30 seconds.</div>
-      <div class="note">The Tax Man's clock keeps ticking even when this tab is closed. If he shows up and you still owe taxes, you get FORECLOSED and lose all your stuff. Your properties keep earning while you're gone too, but only for up to 24 hours.</div>
+      <div class="note">Your properties keep earning while the game is closed, for up to 24 hours.</div>
     </div>
     <footer>Made by a kid who is gonna be a real estate billionaire someday. All jokes are jokes. Please do not actually buy the moon without asking your parents first.</footer>
   </div>
@@ -355,12 +272,8 @@ footer{font-size:12px;color:#6f80b5;margin-top:18px;line-height:1.5}
 const SAVE_KEY = "coinClicker.v2";
 const OLD_SAVE_KEY = "coinClicker";   // the simple version of the game
 const HOUR = 3600 * 1000;
-const BASE_TIMER = 24 * HOUR;         // the Tax Man comes every 24 hours
-const BASE_TAX_RATE = 0.10;           // taxes are 10% of everything you earn, times the tax multiplier
 const COST_GROWTH = 1.15;             // each property costs 15% more than the last one
 const MAX_AWAY = 24 * HOUR;           // properties only earn for 24 hours while the game is closed
-const TIMER_HELP = { base: 50000, growth: 1.6 };
-const NERD_HELP  = { base: 10000, growth: 1.3 };
 
 /* =========================================================
    NUMBER FORMATTING
@@ -390,12 +303,6 @@ function fmt(n){
   return (neg ? "-" : "") + s;
 }
 const money = n => (n < 0 ? "-$" : "$") + fmt(Math.abs(n));
-function fmtTime(ms){
-  ms = Math.max(0, ms);
-  const t = Math.floor(ms / 1000);
-  const h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60;
-  return String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
-}
 function fmtDuration(ms){
   const t = Math.floor(ms / 1000), d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60);
   return (d ? d + "d " : "") + (h ? h + "h " : "") + m + "m";
@@ -420,7 +327,7 @@ const PROPERTY_LIST = [
   ["planet",  "My Planet",               "Planetary Property",            "🌎", "I own Earth. Everyone pays me rent now, even my teacher. ESPECIALLY my teacher."],
   ["solar",   "My Solar System",         "Sun-Powered Rentals",           "☀️", "8 planets, 1 landlord. Pluto applied again but got rejected again. Sorry Pluto."],
   ["stellar", "My Stellar Neighborhood", "Star Block Party",              "✨", "My neighbors are stars now. Like actual stars. They are VERY hot and bad at parties."],
-  ["galaxy",  "My Galaxy",               "Galactic Real Estate",          "🌌", "A hundred billion stars and every single one pays me rent. Space taxes are gonna be insane."],
+  ["galaxy",  "My Galaxy",               "Galactic Real Estate",          "🌌", "A hundred billion stars and every single one pays me rent. That's a LOT of rent checks."],
   ["group",   "My Galaxy Group",         "Galaxy Squad",                  "💫", "Me and my galaxies have a group chat. It's mostly memes."],
   ["super",   "My Supercluster",         "Super Duper Cluster",           "🌠", "It's called a supercluster because it is SUPER. Scientists said that. Probably."],
   ["observe", "My Observable Universe",  "Everything You Can See",        "🔭", "If you can see it, I own it. Stop looking at my stuff."],
@@ -460,7 +367,7 @@ const PROPS = PROPERTY_LIST.map(([key, name, sector, icon, flavor], i) => ({
 const TICKERS = ["PHON","ROOM","HOUS","STRT","HOOD","CITY","CNTY","STAT","CTRY","CONT","HEMI","MOON","PLNT","SOLR","STAR","GLXY","GGRP","SUPR","OBSV","UNIV","DIMN"];
 
 /* =========================================================
-   GLOW-UPS (each one boosts that property's money, and property taxes +1%)
+   GLOW-UPS (each one boosts that property's money)
    ========================================================= */
 const GLOWUPS = [
   [ // My Phone
@@ -662,8 +569,6 @@ function freshRun(now){
     dollars: 0, runEarned: 0,
     owned: PROPS.map(() => 0),
     upgrades: {},
-    timerHelpers: 0, nerdHelpers: 0,
-    taxes: 0, deadline: now + BASE_TIMER,
   };
 }
 function newState(){
@@ -671,19 +576,17 @@ function newState(){
   return Object.assign(freshRun(now), {
     version: 2, company: "Big W Real Estate",
     allTimeEarned: 0, clicks: 0, clickEarned: 0,
-    taxesPaid: 0, refundsCollected: 0, foreclosures: 0, cyclesSurvived: 0,
     achievements: {}, playTime: 0,
     startedAt: now, lastTick: now,
   });
 }
 let S = newState();
 let buyAmt = 1;
-const D = { cps: 0, clickPower: 1, indMult: [], indCps: [], glowups: 0, taxMult: 1, clickPct: 0 };
+const D = { cps: 0, clickPower: 1, indMult: [], indCps: [], glowups: 0, clickPct: 0 };
 
 /* =========================================================
    DERIVED VALUES
    ========================================================= */
-function maxTimer(){ return BASE_TIMER + S.timerHelpers * HOUR; }
 function recompute(){
   const boostIn = PROPS.map(() => 1);
   let clickX = 1, clickPct = 0, glowups = 0;
@@ -702,17 +605,11 @@ function recompute(){
   D.glowups = glowups;
   D.clickPct = clickPct;
   D.clickPower = clickX + cps * clickPct;
-  D.taxMult = 1 + 0.01 * glowups - 0.01 * S.nerdHelpers;
 }
 function buildingCost(i, n){
   const b = PROPS[i].base * Math.pow(COST_GROWTH, S.owned[i]);
   return Math.ceil(b * (Math.pow(COST_GROWTH, n) - 1) / (COST_GROWTH - 1));
 }
-const timerHelpCost = () => Math.ceil(TIMER_HELP.base * Math.pow(TIMER_HELP.growth, S.timerHelpers));
-const nerdHelpCost  = () => Math.ceil(NERD_HELP.base * Math.pow(NERD_HELP.growth, S.nerdHelpers));
-// Firing someone costs double what the last one of that type cost to hire
-const timerFireCost = () => 2 * Math.ceil(TIMER_HELP.base * Math.pow(TIMER_HELP.growth, Math.max(0, S.timerHelpers - 1)));
-const nerdFireCost  = () => 2 * Math.ceil(NERD_HELP.base * Math.pow(NERD_HELP.growth, Math.max(0, S.nerdHelpers - 1)));
 function upgradeUnlocked(u){
   if (S.upgrades[u.id]) return false;
   if (u.type === "click") return S.runEarned >= u.unlockAt;
@@ -725,54 +622,23 @@ function upgradeUnlocked(u){
 function earn(amount){
   if (amount <= 0) return;
   S.dollars += amount; S.runEarned += amount; S.allTimeEarned += amount;
-  S.taxes += amount * BASE_TAX_RATE * D.taxMult; // a negative multiplier means a refund builds up instead
 }
-// Move the game forward to `now`, dealing with any Tax Man visits along the way.
+// Move the game forward to `now`: properties pay out for all the time since the last tick.
 function advance(now){
-  let guard = 0;
-  while (guard++ < 1000) {
-    const until = Math.min(now, S.deadline);
-    if (until > S.lastTick) earn(D.cps * (until - S.lastTick) / 1000);
-    S.lastTick = Math.max(S.lastTick, until);
-    if (now < S.deadline) break;
-    if (!taxManArrives(S.deadline, now)) break;
-  }
+  if (now > S.lastTick) earn(D.cps * (now - S.lastTick) / 1000);
   S.lastTick = now;
 }
-// Returns true if you survive the visit (no taxes owed), false if you get foreclosed.
-function taxManArrives(at, now){
-  if (S.taxes <= 0) {
-    const refund = -S.taxes;
-    S.dollars += refund; S.refundsCollected += refund; S.taxes = 0;
-    S.deadline = at + maxTimer(); S.cyclesSurvived++;
-    toast(refund > 0 ? `The Tax Man came by and gave YOU a ${money(refund)} refund. LOL.` : "The Tax Man came by. You owed nothing. He left sad.");
-    return true;
-  }
-  foreclose(now);
-  return false;
-}
-function foreclose(now, voluntary){
-  const owed = S.taxes, lost = S.dollars;
+// "Sell everything & start over": wipes this run but keeps trophies and all-time stats.
+function startFresh(now){
+  const lost = S.dollars;
   const keep = { company:S.company, allTimeEarned:S.allTimeEarned, clicks:S.clicks, clickEarned:S.clickEarned,
-    taxesPaid:S.taxesPaid, refundsCollected:S.refundsCollected, foreclosures:S.foreclosures + (voluntary ? 0 : 1),
-    cyclesSurvived:S.cyclesSurvived, startedAt:S.startedAt, version:2,
-    achievements:S.achievements, playTime:S.playTime };
+    startedAt:S.startedAt, version:S.version, achievements:S.achievements, playTime:S.playTime };
   S = Object.assign(freshRun(now), keep, { lastTick: now });
   recompute(); rebuildStore(); rebuildLog(); save();
-  if (voluntary) {
-    showModal("🏚️ You Sold Everything",
-      `<p>You sold all your properties, gave away your <b>${money(lost)}</b>, and told the Tax Man to forget about the <b style="color:var(--red)">${money(Math.max(0, owed))}</b> you owed. He actually said okay!</p>
-       <p>Every property, glow-up and helper is gone. The Tax Man's clock starts over at ${BASE_TIMER / HOUR} hours.</p>
-       <p>You still have your trophies, your play time and your all-time stats. Time for a comeback!</p>`,
-      [["Let's GOOO", hideModal]], true);
-    return;
-  }
-  showModal("🚨 FORECLOSED!!! 🚨",
-    `<p>The Tax Man showed up and you still owed <b style="color:var(--red)">${money(owed)}</b> in property taxes.</p>
-     <p>He took your <b>${money(lost)}</b>. He took every property. He took every glow-up. He even took <b>My Phone</b>.</p>
-     <p>Your helpers ran away. Mom is NOT happy.</p>
-     <p class="note">Foreclosures so far: ${S.foreclosures}. Pay the Tax Man next time, okay?</p>`,
-    [["Start over 😭", hideModal]], true);
+  showModal("🏚️ You Sold Everything",
+    `<p>You sold all your properties and gave away your <b>${money(lost)}</b>. Every property and upgrade is gone.</p>
+     <p>You still have your trophies, your play time and your all-time stats. Time for a comeback!</p>`,
+    [["Let's GOOO", hideModal]]);
 }
 function clickCoin(ev){
   const amt = D.clickPower;
@@ -802,45 +668,7 @@ function buyUpgrade(id){
   S.dollars -= u.cost; S.upgrades[id] = true;
   if (u.type === "glow") MKT.mood[u.ind] = Math.min(1.5, MKT.mood[u.ind] * 1.15); // a fresh glow-up gets people hyped
   recompute(); rebuildStore(); rebuildLog(); hideTip(); render();
-  if (u.type === "glow") toast(`✨ Glow-up: “${u.name}”! ${bonusText(u)}. (Taxes +1%)`);
-}
-function buyTimerHelper(){
-  const c = timerHelpCost(); if (S.dollars < c) return;
-  S.dollars -= c; S.timerHelpers++; S.deadline += HOUR;
-  toast("The Tax Extension Guy filled out a 'Can I Have More Time Pls' form. +1 hour!");
-  render(); refreshTip();
-}
-function buyNerdHelper(){
-  const c = nerdHelpCost(); if (S.dollars < c) return;
-  S.dollars -= c; S.nerdHelpers++; recompute();
-  if (D.taxMult < 0 && D.taxMult > -0.011) toast("Taxes are NEGATIVE now. The government pays YOU. Big brain moment.");
-  render(); refreshTip();
-}
-function fireTimerHelper(){
-  const c = timerFireCost(); if (S.timerHelpers < 1 || S.dollars < c) return;
-  S.dollars -= c; S.timerHelpers--;
-  S.deadline = Math.max(Date.now() + 60000, S.deadline - HOUR); // never fire your way into an instant foreclosure
-  toast(`Fired a Tax Extension Guy. Paid him ${money(c)} to leave. −1 hour.`, true);
-  render(); refreshTip();
-}
-function fireNerdHelper(){
-  const c = nerdFireCost(); if (S.nerdHelpers < 1 || S.dollars < c) return;
-  S.dollars -= c; S.nerdHelpers--; recompute();
-  toast(`Fired a Math Nerd. Paid him ${money(c)} to leave. Taxes +1%.`, true);
-  render(); refreshTip();
-}
-function payTaxes(){
-  const now = Date.now(); advance(now);
-  if (S.taxes > 0) {
-    if (S.dollars < S.taxes) return;
-    S.dollars -= S.taxes; S.taxesPaid += S.taxes;
-    toast(`Paid the Tax Man ${money(S.taxes)}. He said 'thank you young man.' The clock starts over!`);
-  } else {
-    const refund = -S.taxes; S.dollars += refund; S.refundsCollected += refund;
-    toast(refund > 0 ? `Collected a ${money(refund)} tax refund. FREE MONEY!` : "Told the Tax Man we're all good. He gave a thumbs up.");
-  }
-  S.taxes = 0; S.deadline = now + maxTimer(); S.cyclesSurvived++;
-  render();
+  if (u.type === "glow") toast(`✨ Glow-up: “${u.name}”! ${bonusText(u)}.`);
 }
 
 /* =========================================================
@@ -901,50 +729,11 @@ function rebuildLog(){
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
 
 function render(){
-  const now = Date.now();
   $("dollars").textContent = money(S.dollars);
   $("cps").textContent = "per second: " + money(D.cps);
   $("clickInfo").textContent = "+" + money(D.clickPower) + " per click";
 
-  // The Tax Man panel
-  const left = S.deadline - now, refund = S.taxes < 0;
-  const urgent = !refund && S.taxes > 0 && left < HOUR;
-  const tax = $("tax");
-  tax.classList.toggle("refund", refund || (S.taxes === 0 && D.taxMult < 0));
-  tax.classList.toggle("urgent", urgent);
-  $("taxHead").textContent = refund ? "😎 THE GOVERNMENT OWES YOU MONEY 😎" : "😱 THE TAX MAN IS COMING 😱";
-  $("taxLabel").textContent = refund ? "TAX REFUND FOR YOU" : "PROPERTY TAXES OWED";
-  $("taxAmt").textContent = money(Math.abs(S.taxes));
-  $("timerLabel").firstChild.textContent = refund ? "PAYDAY IN" : "HE GETS HERE IN";
-  $("taxTimer").textContent = fmtTime(left);
-  $("taxBar").style.width = Math.max(0, Math.min(100, left / maxTimer() * 100)) + "%";
-  const pct = (D.taxMult * 100).toFixed(0);
-  $("taxInfo").innerHTML =
-    `Taxes are ${(BASE_TAX_RATE * 100).toFixed(0)}% of everything you earn × <b>${pct}%</b> ` +
-    `(+${D.glowups}% glow-ups, −${S.nerdHelpers}% math nerds)<br>` +
-    `${refund || D.taxMult < 0 ? "Refund growing by" : "Piling up"}: <b>${money(Math.abs(D.cps * BASE_TAX_RATE * D.taxMult))}/s</b> · He visits every ${maxTimer() / HOUR}h`;
-  const pay = $("payBtn");
-  if (S.taxes > 0) {
-    pay.disabled = S.dollars < S.taxes;
-    pay.textContent = pay.disabled ? `NEED ${money(S.taxes - S.dollars)} MORE 😬` : `PAY THE TAX MAN ${money(S.taxes)}`;
-  } else {
-    pay.disabled = false;
-    pay.textContent = refund ? `COLLECT ${money(-S.taxes)} REFUND 🤑` : "TELL THE TAX MAN WE'RE GOOD 👍";
-  }
-  document.body.classList.toggle("danger", urgent);
-  document.title = urgent ? `😱 ${fmtTime(left)} TAX MAN IS COMING 😱` : `${money(S.dollars)} · Coin Clicker`;
-
-  // Helpers
-  const tc = timerHelpCost(), nc = nerdHelpCost();
-  $("timerHelpN").textContent = S.timerHelpers; $("timerHelpC").textContent = money(tc);
-  $("timerHelpBtn").classList.toggle("cant", S.dollars < tc);
-  $("nerdHelpN").textContent = S.nerdHelpers; $("nerdHelpC").textContent = money(nc);
-  $("nerdHelpBtn").classList.toggle("cant", S.dollars < nc);
-  const tf = timerFireCost(), nf = nerdFireCost();
-  $("timerFireC").textContent = S.timerHelpers ? money(tf) : "nobody hired";
-  $("timerFireBtn").disabled = !S.timerHelpers || S.dollars < tf;
-  $("nerdFireC").textContent = S.nerdHelpers ? money(nf) : "nobody hired";
-  $("nerdFireBtn").disabled = !S.nerdHelpers || S.dollars < nf;
+  document.title = `${money(S.dollars)} · Coin Clicker`;
 
   // Properties: the ones you've found, plus one "secret property" teaser for the next one
   let shownSecret = false;
@@ -983,13 +772,6 @@ function renderStats(){
     ["Properties owned", fmt(S.owned.reduce((a, b) => a + b, 0))],
     ["Upgrades bought", `${Object.keys(S.upgrades).length} / ${UPGRADES.length}`],
     ["Glow-ups", `${D.glowups} / ${UPGRADES.filter(u => u.type === "glow").length}`],
-    ["Tax multiplier", (D.taxMult * 100).toFixed(0) + "%"],
-    ["Tax Extension Guys", S.timerHelpers],
-    ["Math Nerds", S.nerdHelpers],
-    ["Taxes paid (all time)", money(S.taxesPaid)],
-    ["Refunds collected", money(S.refundsCollected)],
-    ["Tax Man visits survived", S.cyclesSurvived],
-    ["Times foreclosed", S.foreclosures],
     ["Trophies", `${Object.keys(S.achievements).length} / ${ACH.length}`],
     ["Play time", fmtDuration(S.playTime * 1000)],
     ["Playing since", new Date(S.startedAt).toLocaleString()],
@@ -1019,28 +801,11 @@ function tipHTML(key){
     if (u.type === "glow") {
       sec = PROPS[u.ind].sector + " · Glow-Up";
       bonus = esc(bonusText(u));
-      pen = `<div class="tp">Catch: property taxes +1% (fancier stuff = more taxes)</div>`;
     } else {
       sec = "Clicking"; bonus = u.kind === "x" ? `Click power ×${u.power}` : `Every click also earns +${u.power * 100}% of your money per second`;
     }
     return `<div class="tn">${u.icon} ${esc(u.name)}</div><div class="ts">${esc(sec)}</div><div class="td">${esc(u.desc)}</div>
       <div class="tb">Bonus: ${bonus}</div>${pen}<div class="tc">Cost: ${money(u.cost)}</div>`;
-  }
-  if (kind === "fire") {
-    const timer = id === "timer", n = timer ? S.timerHelpers : S.nerdHelpers;
-    return `<div class="tn">🔥 Fire a ${timer ? "Tax Extension Guy" : "Math Nerd"}</div>
-      <div class="td">Firing people is super awkward. You have to pay them a goodbye bonus so they leave nicely.</div>
-      <div class="tp">${timer ? "−1 hour off the Tax Man's timer and the countdown (always leaves at least 1 minute)" : "+1% property taxes"}</div>
-      <div>Hired: ${n}</div>
-      <div class="tc">${n ? "Goodbye bonus: " + money(timer ? timerFireCost() : nerdFireCost()) + " (2× what the last one cost)" : "Nobody to fire"}</div>`;
-  }
-  if (kind === "help") {
-    if (id === "timer") return `<div class="tn">⏳ Tax Extension Guy</div><div class="td">He fills out a form called 'Can I Have More Time Pls.' It works every single time.</div>
-      <div class="tb">+1 hour on the Tax Man's timer (the current countdown gets +1 hour too)</div>
-      <div>Hired: ${S.timerHelpers} · Tax Man visits every ${maxTimer() / HOUR}h</div><div class="tc">Cost: ${money(timerHelpCost())}</div>`;
-    return `<div class="tn">🤓 Math Nerd Accountant</div><div class="td">He found a loophole on page 4,000 of the tax rules. Nobody else has ever read page 4,000.</div>
-      <div class="tb">−1% property taxes. Under 0%, the government starts paying YOU.</div>
-      <div>Hired: ${S.nerdHelpers} · Tax multiplier now: ${(D.taxMult * 100).toFixed(0)}%</div><div class="tc">Cost: ${money(nerdHelpCost())}</div>`;
   }
   if (kind === "ach") {
     const a = ACH_BY_ID[id]; if (!a) return "";
@@ -1135,7 +900,7 @@ function sanitize(o){
   base.achievements = {};
   for (const id in (o.achievements || {})) if (ACH_BY_ID[id] && isFinite(o.achievements[id])) base.achievements[id] = +o.achievements[id];
   if (!isFinite(base.playTime) || base.playTime < 0) base.playTime = 0;
-  for (const k of ["dollars","runEarned","allTimeEarned","taxes","deadline","lastTick"]) if (!isFinite(base[k])) throw new Error("Broken save");
+  for (const k of ["dollars","runEarned","allTimeEarned","lastTick"]) if (!isFinite(base[k])) throw new Error("Broken save");
   return base;
 }
 let canSave = true;
@@ -1148,18 +913,17 @@ function applyLoaded(obj, isImport){
   S = sanitize(obj);
   recompute();
   const now = Date.now(), away = now - S.lastTick;
-  // Properties only earn for up to 24 hours while you're gone. The Tax Man's clock still runs the whole time.
+  // Properties only earn for up to 24 hours while you're gone.
   const capped = away > MAX_AWAY;
   if (capped) S.lastTick = now - MAX_AWAY;
-  const before = S.dollars, taxesBefore = S.taxes, foreclosedBefore = S.foreclosures;
+  const before = S.dollars;
   advance(now);
   recompute(); rebuildStore(); rebuildLog(); $("companyName").value = S.company; render();
-  if (S.foreclosures === foreclosedBefore && away > 60000 && !isImport) {
+  if (away > 60000 && !isImport) {
     showModal("👋 Welcome back!",
       `<p>You were gone for <b>${fmtDuration(away)}</b>.</p>
        <p>Your properties made <b style="color:var(--lime)">${money(S.dollars - before)}</b> while you were away!</p>
-       ${capped ? `<p class="note">(Properties only earn for up to 24 hours while you're gone.)</p>` : ""}
-       <p>Your taxes went up by <b style="color:var(--red)">${money(S.taxes - taxesBefore)}</b>. The Tax Man gets here in <b>${fmtTime(S.deadline - now)}</b>.</p>`,
+       ${capped ? `<p class="note">(Properties only earn for up to 24 hours while you're gone.)</p>` : ""}`,
       [["Back to business 😎", hideModal]]);
   }
 }
@@ -1199,14 +963,14 @@ function importSave(){
 }
 function startOver(){
   showModal("🏚️ Sell everything?",
-    `<p>You lose all your money, every property, every upgrade and every helper. Your taxes get wiped and the Tax Man's clock starts over at ${BASE_TIMER / HOUR} hours.</p>
+    `<p>You lose all your money, every property and every upgrade.</p>
      <p>You keep your trophies, play time and all-time stats. You can't undo this!</p>`,
-    [["Sell it all", () => { hideModal(); foreclose(Date.now(), true); }, "danger"],
+    [["Sell it all", () => { hideModal(); startFresh(Date.now()); }, "danger"],
      ["Nope", hideModal]], true);
 }
 function hardReset(){
-  showModal("🔥 Delete EVERYTHING?", `<p>This deletes everything. Money, properties, upgrades, helpers, trophies, stats. ALL OF IT. You can't undo this!</p>`,
-    [["Delete it all", () => { S = newState(); $("companyName").value = S.company; recompute(); rebuildStore(); rebuildLog(); resetMarket(); lastAchKey = ""; checkAchievements(true); renderAchievements(); save(); render(); hideModal(); toast("Brand new start. The Tax Man forgot all about you."); }, "danger"],
+  showModal("🔥 Delete EVERYTHING?", `<p>This deletes everything. Money, properties, upgrades, trophies, stats. ALL OF IT. You can't undo this!</p>`,
+    [["Delete it all", () => { S = newState(); $("companyName").value = S.company; recompute(); rebuildStore(); rebuildLog(); resetMarket(); lastAchKey = ""; checkAchievements(true); renderAchievements(); save(); render(); hideModal(); toast("Brand new start. Let's GOOO!"); }, "danger"],
      ["Nope", hideModal]], true);
 }
 
@@ -1221,7 +985,7 @@ const NEWS = [
   "Grown-up real estate agent asks a 12-year-old for advice. Gets it.",
   "Teacher assigns essay 'What I Did This Summer.' Kid writes 'bought a planet.'",
   "Housing market report: everything is AWESOME.",
-  "Local dog barks at the Tax Man. Good boy.",
+  "Local dog barks at the mailman. Good boy.",
   "Pizza delivery guy gets lost in your empire. Again.",
   "Rumor: the coin has a W on it because it stands for WINNING.",
   "Grandma brags about you at bingo night. Again.",
@@ -1231,14 +995,9 @@ const NEWS = [
   "Your best friend asks to borrow 5 bucks. You give him a street instead.",
   "Weather forecast: 100% chance of money.",
   "School nurse says clicking 10,000 times is 'not a sport.' We disagree.",
-  "Your bedtime has been moved to 'whenever the Tax Man is paid.'",
+  "Your bedtime has been moved to 'one more click.'",
 ];
 function newsLine(){
-  const left = S.deadline - Date.now();
-  if (S.taxes > 0 && left < HOUR) return "BREAKING: The Tax Man was spotted at the end of your street!! PAY YOUR TAXES!!!";
-  if (S.taxes > 0 && S.dollars < S.taxes && Math.random() < 0.4) return "Your taxes are bigger than your money right now. Your Math Nerd is sweating. You're sweating.";
-  if (D.taxMult < 0 && Math.random() < 0.4) return "The government mailed you a refund check with a sticky note that says 'u r cool.'";
-  if (S.foreclosures > 0 && Math.random() < 0.15) return `Comeback alert: this is your empire's round ${S.foreclosures + 1}. Comebacks are the best.`;
   if (D.glowups > 0 && Math.random() < 0.3) {
     const owned = UPGRADES.filter(u => u.type === "glow" && S.upgrades[u.id]);
     const u = owned[Math.floor(Math.random() * owned.length)];
@@ -1399,7 +1158,7 @@ window.addEventListener("resize", drawMarket);
 
 /* =========================================================
    TROPHIES (achievements)
-   Checked once a second. Selling everything or getting foreclosed keeps them;
+   Checked once a second. Selling everything keeps them;
    "Delete EVERYTHING" wipes them. Stored as { id: unlockTimestamp }.
    ========================================================= */
 const recentClicks = [];
@@ -1441,19 +1200,6 @@ A("Properties", "own_all",  "🗂️", "Collector's Edition",   "Own at least on
 A("Upgrades", "upg_all",  "🏆", "MAX LEVEL",     "Buy every single upgrade in the game.", () => upgradesOwned() >= UPGRADES.length);
 A("Upgrades", "upg_full", "💎", "Fully Loaded",  "Buy all 5 glow-ups for one property.",
   () => PROPS.some((_, i) => UPGRADES.filter(u => u.type === "glow" && u.ind === i).every(u => S.upgrades[u.id])));
-
-A("Taxes", "help_t1",  "⏳", "Five More Minutes",          "Hire your first Tax Extension Guy.",            () => S.timerHelpers >= 1);
-A("Taxes", "help_t10", "📅", "Professional Procrastinator", "Hire 10 Tax Extension Guys.",                  () => S.timerHelpers >= 10);
-A("Taxes", "help_t24", "🗓️", "Homework Due Next Week",     "Stretch the Tax Man's timer to 48 hours.",      () => S.timerHelpers >= 24);
-A("Taxes", "help_n1",  "🤓", "Nerd Squad",                 "Hire your first Math Nerd Accountant.",         () => S.nerdHelpers >= 1);
-A("Taxes", "help_n25", "🧮", "Calculator Gang",            "Hire 25 Math Nerds.",                           () => S.nerdHelpers >= 25);
-A("Taxes", "help_n50", "🧠", "Big Brain Club",             "Hire 50 Math Nerds.",                           () => S.nerdHelpers >= 50);
-A("Taxes", "tax_neg",  "🎩", "Government Pays ME??",       "Get your tax multiplier to 0% or lower.",       () => D.taxMult <= 0);
-A("Taxes", "tax_pay",  "🧾", "Paid the Tax Man",           "Pay your taxes before he shows up.",            () => S.taxesPaid > 0);
-A("Taxes", "tax_7",    "😇", "Responsible Adult (Kinda)",  "Survive 7 Tax Man visits.",                     () => S.cyclesSurvived >= 7);
-A("Taxes", "tax_1b",   "🏛️", "Biggest Taxpayer Ever",      "Pay $1 billion in taxes total.",                () => S.taxesPaid >= 1e9);
-A("Taxes", "tax_ref",  "🎁", "Free Money",                 "Collect a tax refund.",                         () => S.refundsCollected > 0);
-A("Taxes", "tax_fc",   "😭", "FORECLOSED!",                "Get foreclosed. It happens to the best of us.", () => S.foreclosures >= 1);
 
 [[600, "🎮", "Just One More Click", "10 minutes"], [3600, "🍕", "Skipped a Snack Break", "1 hour"], [18000, "🌙", "Way Past Bedtime", "5 hours"],
  [86400, "🛋️", "Didn't Go Outside", "24 hours"], [360000, "🌱", "Touch Grass Pls", "100 hours"]]
@@ -1507,11 +1253,6 @@ function renderAchievements(){
    ========================================================= */
 buildBuildingRows();
 $("coin").addEventListener("click", clickCoin);
-$("payBtn").addEventListener("click", payTaxes);
-$("timerHelpBtn").addEventListener("click", buyTimerHelper);
-$("nerdHelpBtn").addEventListener("click", buyNerdHelper);
-$("timerFireBtn").addEventListener("click", fireTimerHelper);
-$("nerdFireBtn").addEventListener("click", fireNerdHelper);
 $("startOverBtn").addEventListener("click", startOver);
 $("saveNow").addEventListener("click", () => { save(); toast(canSave ? "Game saved! 💾" : "This browser won't let the game save here. Try Export instead.", !canSave); });
 $("exportBtn").addEventListener("click", exportSave);
